@@ -9,14 +9,8 @@ apt-get -y install net-tools dnsutils iputils-ping apache2 curl php7.3 libapache
 #Расширения для работы с базами данных
 apt-get -y install php7.3-mysql  
 
-# Очистка всего не нужного
-cd /etc/apache2/sites-enabled/ && rm *
-
 # Включаем необходимые модули 
 a2enmod php7.3 deflate expires rewrite
-
-# Включение нового сайта на wordpress
-a2ensite virtualHost.conf  
 
 # Установить mariaDB
 apt-get install -y mariadb-server
@@ -33,7 +27,7 @@ END
 filename="/etc/mysql/mariadb.conf.d/50-server.cnf";
 sed -i "s/bind-address            = 127.0.0.1/bind-address            = 0.0.0.0/" $filename;
 
-chown -R www-data:www-data /var/www/site/
-
+# Перезагрузка MariaDB
+systemctl restart mariadb.service
 # Перезагрузка apache2
 systemctl restart apache2.service
