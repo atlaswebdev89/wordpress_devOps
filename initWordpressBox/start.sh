@@ -16,6 +16,9 @@ a2enmod php7.3 deflate expires rewrite
 apt-get install -y mariadb-server
 
 # Создаем базу данных для wordpress
+# ключ -f - пропуск ошибок
+# ключ -v - подробный вывод процесса установки
+
 mariadb -v -f -u root -proot  <<END
 	CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 	GRANT ALL ON wordpress.* TO 'wordpress'@'%' IDENTIFIED BY 'wordpress';

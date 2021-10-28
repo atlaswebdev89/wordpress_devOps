@@ -3,7 +3,7 @@
 config=virtualHost.conf
 dir=/home/apache2/config/
 
-#ПРоверяем наличие конфигурации для виртуального сервера apache
+#Проверяем наличие конфигурации для виртуального сервера apache
 	if [[ -f $dir$config ]]
 	then
 		cp $dir$config /etc/apache2/sites-available/
