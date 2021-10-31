@@ -1,7 +1,7 @@
 #!/bin/bash
 
 config=virtualHost.conf
-dir=/home/apache2/config/
+dir=/home/config/
 
 #Проверяем наличие конфигурации для виртуального сервера apache
 	if [[ -f $dir$config ]]
