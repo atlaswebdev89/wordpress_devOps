@@ -1,0 +1,196 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Atlas\n"
+"POT-Creation-Date: 2021-11-11 01:21+0300\n"
+"PO-Revision-Date: 2021-11-10 23:20+0300\n"
+"Last-Translator: \n"
+"Language-Team: Atlas&Comp\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-Basepath: ../php\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/PageContact.php:18
+msgid "PageContact"
+msgstr ""
+
+#: includes/PageContact.php:21
+msgid "Phone"
+msgstr ""
+
+#: includes/PageContact.php:22
+msgid "Phone-1"
+msgstr ""
+
+#: includes/PageContact.php:23 includes/PageContact.php:25
+#: includes/PageContact.php:27 includes/PageContact.php:29
+msgid "Set Phone"
+msgstr ""
+
+#: includes/PageContact.php:24
+msgid "Phone-2"
+msgstr ""
+
+#: includes/PageContact.php:26
+msgid "Phone-3"
+msgstr ""
+
+#: includes/PageContact.php:28
+msgid "Phone-4"
+msgstr ""
+
+#: includes/PageContact.php:32 includes/PageContact.php:33
+#: includes/PageContact.php:35
+msgid "Email"
+msgstr ""
+
+#: includes/PageContact.php:39 includes/PageContact.php:40
+msgid "Address"
+msgstr ""
+
+#: includes/PageContact.php:41
+msgid "Set Address Company"
+msgstr ""
+
+#: includes/PageContact.php:42
+msgid "Second Address"
+msgstr ""
+
+#: includes/PageContact.php:43
+msgid "Set Secondary Address Company"
+msgstr ""
+
+#: includes/PageContact.php:46
+msgid "WorkTime"
+msgstr ""
+
+#: includes/PageContact.php:47 includes/PageContact.php:49
+msgid "Time Working"
+msgstr ""
+
+#: includes/PageContact.php:48
+msgid "Set time working"
+msgstr ""
+
+#: includes/PageContact.php:50 includes/SliderCarbon.php:22
+msgid "dayWorking"
+msgstr ""
+
+#: includes/PageContact.php:51
+msgid "Set working day"
+msgstr ""
+
+#: includes/PageContact.php:53
+msgid "Monday"
+msgstr ""
+
+#: includes/PageContact.php:54
+msgid "Tuesday"
+msgstr ""
+
+#: includes/PageContact.php:55
+msgid "Wednesday"
+msgstr ""
+
+#: includes/PageContact.php:56
+msgid "Thursday"
+msgstr ""
+
+#: includes/PageContact.php:57
+msgid "Friday"
+msgstr ""
+
+#: includes/PageContact.php:58
+msgid "Saturday"
+msgstr ""
+
+#: includes/PageContact.php:59
+msgid "Time Working in Saturday"
+msgstr ""
+
+#: includes/PageContact.php:67
+msgid "Sunday"
+msgstr ""
+
+#: includes/PageContact.php:68
+msgid "Time Working in Sunday"
+msgstr ""
+
+#: includes/PageContact.php:77
+msgid "Links"
+msgstr ""
+
+#: includes/PageContact.php:78
+msgid "Instagram"
+msgstr ""
+
+#: includes/PageContact.php:79
+msgid "link in profile Instagram"
+msgstr ""
+
+#: includes/PageContact.php:81
+msgid "Telegram"
+msgstr ""
+
+#: includes/PageContact.php:82
+msgid "link in profile Telegram"
+msgstr ""
+
+#: includes/PageContact.php:84
+msgid "VK"
+msgstr ""
+
+#: includes/PageContact.php:85
+msgid "link in profile VK"
+msgstr ""
+
+#: includes/PageContact.php:89
+msgid "Info"
+msgstr ""
+
+#: includes/PageContact.php:90
+msgid "About Company"
+msgstr ""
+
+#: includes/PageContact.php:91
+msgid "Info about company"
+msgstr ""
+
+#: includes/SliderCarbon.php:12
+msgid "Slides"
+msgstr ""
+
+#: includes/SliderCarbon.php:13
+msgid "Slide"
+msgstr ""
+
+#: includes/SliderCarbon.php:15
+msgid "Slider"
+msgstr ""
+
+#: includes/SliderCarbon.php:18
+msgid "Add slide for main page"
+msgstr ""
+
+#: includes/SliderCarbon.php:23
+msgid "Add slide and info for main page"
+msgstr ""
+
+#: includes/SliderCarbon.php:24
+msgid "Add slide"
+msgstr ""
+
+#: includes/SliderCarbon.php:25
+msgid "Add description"
+msgstr ""
+
+#: includes/SliderCarbon.php:26
+msgid "Add title"
+msgstr ""
