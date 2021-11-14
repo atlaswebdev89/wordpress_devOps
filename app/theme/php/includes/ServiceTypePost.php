@@ -93,4 +93,91 @@ function true_post_type_messages( $messages ) {
 	return $messages;
 }
 
+//add new colums for custom type post "projects_type"
+add_filter( 'manage_projects_type_posts_columns', function ( $columns ) {
+	$my_columns = [
+		'id'    => __('ID',DOMAIN_TEXT),
+		'thumb' => __('ThumbnailPost',DOMAIN_TEXT),
+	];
+        
+        $sort = [
+        	'cash'	=> __('Cash, USD',DOMAIN_TEXT),
+        ];
+    return array_slice( $columns, 0, 1 ) + $my_columns + array_slice( $columns, 1, 2 ) +$sort + array_slice( $columns, 3 );
+} );
 
+// Добавляем колонку миниатюры для таксономии TypesProject
+add_filter( 'manage_edit-TypesProject_columns', 'true_add_columns');
+function true_add_columns($my_columns) {
+            // наша новая колонка в виде отдельного массива
+            $preview = [
+                            'id' => __('ID',DOMAIN_TEXT), 
+                            'previews' => __('Preview',DOMAIN_TEXT), 
+                        ];
+            // разделяем массив колонок и вставляем новую в нужное место
+            $my_columns = array_slice( $my_columns, 0, 1) + $preview + array_slice( $my_columns, 1);
+        return $my_columns;
+}
+
+// Заполняем колонки для произвольного типа записей данными
+add_action('manage_projects_type_posts_custom_column', 'add_columns_type_post');
+function add_columns_type_post ($column_name) {
+    switch ( $column_name ) {
+        case 'id':
+		echo get_the_ID();
+		break;
+	
+	case 'thumb':
+		if(has_post_thumbnail(get_the_ID())) { ?>
+			<a href="<?php echo get_edit_post_link(); ?>">
+				<?php echo get_the_post_thumbnail(get_the_ID(), array(50,50)); ?>
+			</a>
+		<?php }
+		break;
+	
+	case 'cash':
+            if(get_post_meta(get_the_ID(),'_crb_cash_projects', true)) {
+				echo get_post_meta(get_the_ID(),'_crb_cash_projects', true).' $';
+			}else {
+				echo __('Not set', DOMAIN_TEXT);
+			}
+		break;
+	}
+}
+
+// Заполняем колонки для произвольной таксономии (10, 2 - ОБЯЗАТЕЛЬНО!!!)
+add_action('manage_TypesProject_custom_column', 'add_columns_custom_tax', 10, 3);
+function add_columns_custom_tax ($out, $column_name, $term_id) {
+    switch ($column_name) {
+        case 'id': 
+                return $term_id;
+            break;
+        case 'previews': 
+                    $img = get_term_meta( $term_id, '_crb_thumb_tax_typesproject', true);
+                    if($img) {
+                        // ссылка на  картинку по ID вложения
+                        $term_thumbnail_url = wp_get_attachment_image_url( $img, "thumbnail");
+                return "<a href =".get_edit_term_link($term_id)."><img width=50 src=".$term_thumbnail_url. " /></a>";
+                    }
+            break;
+    }
+}
+
+// добавляем возможность сортировать колонку
+add_filter( 'manage_'.'edit-projects_type'.'_sortable_columns', 'add_views_sortable_column' );
+function add_views_sortable_column( $sortable_columns ){
+	$sortable_columns['cash'] = [ 'cash_sort', true ];
+            // false = asc (по умолчанию)
+            // true  = desc
+	return $sortable_columns;
+}
+//Переделываем основной запрос 
+add_action( 'pre_get_posts', 'my_cash_orderby' );
+function my_cash_orderby( $query ) {
+        if( ! is_admin()) return;
+            $orderby = $query->get( 'orderby');
+                if('cash_sort' == $orderby ) {
+                    $query->set('meta_key','_crb_cash_projects');
+                    $query->set('orderby','meta_value_num');
+                }
+}

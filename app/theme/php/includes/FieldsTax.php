@@ -9,7 +9,7 @@ function create_fields_tax () {
     Container::make( 'term_meta', 'ImageTaxProjects' )
         ->where('term_taxonomy', '=', 'TypesProject')
         ->add_fields(array(
-            Field::make( 'image', 'thumb',__( 'ThumbTaxonomy', DOMAIN_TEXT ) )
+            Field::make( 'image', 'crb_thumb_tax_typesproject', __( 'ThumbTaxonomy', DOMAIN_TEXT ) )
         ));
 }
 
@@ -19,6 +19,6 @@ function create_fields_tax_category () {
     Container::make( 'term_meta', 'ImageTaxProjects' )
         ->where('term_taxonomy', '=', 'category')
         ->add_fields(array(
-            Field::make( 'image', 'thumb', __( 'ThumbTaxonomy', DOMAIN_TEXT ) )
+            Field::make( 'image', 'crb_thumb_category', __( 'ThumbTaxonomy', DOMAIN_TEXT ) )
         ));
 }
