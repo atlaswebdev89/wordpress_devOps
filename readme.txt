@@ -8,6 +8,7 @@ Wp-Cli 2.5.0
 PhpMyadmin 5.1.1
 Redis 5.0.3
 Memcached 1.5.6
+xdebug (в IDE надо делать mapping каталогов)
 
 *****************************************
 Название виртуального хоста
@@ -42,3 +43,6 @@ vagrant provision --provision-with phpmyadmin
 
 # Создание дамп BD файл createDumpDB.sh
 # Запустить в vagrant createDumpDB.sh и создаться файл data-dump.sql
+
+# Обновить настройки xdebug
+vagrant provision --provision-with xdebug

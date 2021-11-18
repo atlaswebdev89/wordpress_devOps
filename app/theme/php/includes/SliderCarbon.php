@@ -3,7 +3,7 @@
 // Используем плагин Carbon Fields
 
 use Carbon_Fields\Container;
-use Carbon_Fields\Field;
+use Carbon_Fields\Field  ;
 
 add_action( 'carbon_fields_register_fields', 'create_page_slider' );
 

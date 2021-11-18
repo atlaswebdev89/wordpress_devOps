@@ -29,4 +29,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "phpmyadmin", type: "shell", path: "initWordpressBox/phpmyadmin.sh"
   config.vm.provision "redis", type: "shell", path: "initWordpressBox/redis.sh"
   config.vm.provision "memchached", type: "shell", path: "initWordpressBox/memcached.sh"
+  config.vm.provision "xdebug", type: "shell", path: "initWordpressBox/xdebug.sh"
 end
