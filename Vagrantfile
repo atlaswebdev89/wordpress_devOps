@@ -24,7 +24,12 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.provision "start", type: "shell", path: "initWordpressBox/start.sh"
-  config.vm.provision "siteEnable", type: "shell", run: "always", path: "initWordpressBox/config-site.sh"
+
+  # В этом провижине указана опция run: always, которая запускает его всегда при старте VAGRANT И ПОЛНОСТЬЮ ПЕРЕЗАПИСЫВАЕТ
+  # БАЗУ ДАННЫХ Это не всегда нужно
+  #config.vm.provision "siteEnable", type: "shell", run: "always", path: "initWordpressBox/config-site.sh"
+  
+  config.vm.provision "siteEnable", type: "shell",  path: "initWordpressBox/config-site.sh"
   config.vm.provision "wp-cli", type: "shell", path: "initWordpressBox/wp-cli.sh"
   config.vm.provision "phpmyadmin", type: "shell", path: "initWordpressBox/phpmyadmin.sh"
   config.vm.provision "redis", type: "shell", path: "initWordpressBox/redis.sh"
