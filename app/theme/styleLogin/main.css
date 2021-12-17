@@ -8,7 +8,7 @@ body {
     
 }
 .login h1 a {
-    background-image: url('../images/logo-login.jpg');
+    background-image: url('../images/logo-login.png');
     background-size: contain;
     height: 80px;
     width: 300px;

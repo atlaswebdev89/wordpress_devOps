@@ -44,23 +44,6 @@ gulp.task ("lang", function () {
         .pipe (gulp.dest("site/wp-content/themes/belrock/languages/"))
 });
 
-//Синхронизация файлов 
-// gulp.task("rsync-files-theme", function () {
-//    return gulp.src(
-//                        "app/theme/php/**", { dot: true })
-//        .pipe(rsync({
-//                        root:'app/theme/php',
-//                        destination: 'site/wp-content/themes/belrock/',
-//                        //exclude: ['extensions-front'], // Excludes files from deploy
-//                        archive: true,
-//                        silent: true,
-//                        compress: true,
-//                        recursive: true,
-//                        delete:true,
-//                        clean:true
-//        }));
-//});
-
 // Копирование файлов php для темы
 gulp.task ("copy-files-theme", function () {
    return gulp.src("app/theme/php/**/*")

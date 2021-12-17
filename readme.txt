@@ -46,3 +46,8 @@ vagrant provision --provision-with phpmyadmin
 
 # Обновить настройки xdebug
 vagrant provision --provision-with xdebug
+
+
+# При копирование окружения с github надо удалить
+    - config/data-dump.sql
+    - в site/wp-config.php указать параметры для подключения к базе данных (wodpress, wordpress, wordpress)
