@@ -38,6 +38,8 @@ function themes_setup() {
         add_theme_support('custom-logo');
         //Поддержка миниатюр
         add_theme_support('post-thumbnails');
+        // Поддержка фонового изображения
+        add_theme_support( 'custom-background' );
         /*
          * Let WordPress manage the document title.
          * By adding theme support, we declare that this theme does not use a
