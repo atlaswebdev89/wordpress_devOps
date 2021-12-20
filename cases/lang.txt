@@ -1,0 +1,9 @@
+Для перевода название темы и описания 
+
+# Theme Name
+msgid "Buhgalter Landing"
+msgstr ""
+
+#. Description of the theme
+msgid "Theme for web landing buhgalter"
+msgstr ""
