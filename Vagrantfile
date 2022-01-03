@@ -28,13 +28,12 @@ Vagrant.configure("2") do |config|
   end
   
   # Устранения бага при монтировании nfs
-
-$script = <<END
-    sudo mount 192.168.56.1:/home/atlas/web/vagrant/wordpress/site /var/www/site;
-    sudo mount 192.168.56.1:/home/atlas/web/vagrant/wordpress/config /home/config;
-END
-
-  config.vm.provision "shell", run: "always", inline: $script
+  config.vm.provision "nfs-not-bags", type: "shell", run: "always" do |s|
+    vagrant_root = File.dirname(__FILE__);
+    s.inline = "sudo mount 192.168.56.1:$1/site /var/www/site;
+                sudo mount 192.168.56.1:$1/config /home/config;"
+    s.args   = [vagrant_root]
+  end
 
   config.vm.provision "start", type: "shell", path: "initWordpressBox/start.sh"
 
