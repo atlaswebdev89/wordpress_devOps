@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   # Создается приватная сеть и назначается ip адресс (dhcp не работает !!! WARNING!!! BUG!! )	
   config.vm.network "private_network", ip: "192.168.56.100"	 
   # Синхронизация каталогов
-  config.vm.synced_folder "config/", "/home/config/", type: "nfs", linux__nfs_options: ['rw','no_subtree_check','all_squash','async']
+  config.vm.synced_folder "config/", "/home/config/", type: "nfs",linux__nfs_options: ['rw','no_subtree_check','all_squash','async']
   config.vm.synced_folder "site/", "/var/www/site", type: "nfs", linux__nfs_options: ['rw','no_subtree_check','all_squash','async']
   #Настройки virtualbox
   config.vm.provider "virtualbox" do |vb|
@@ -27,6 +27,15 @@ Vagrant.configure("2") do |config|
       vb.cpus = 2
   end
   
+  # Устранения бага при монтировании nfs
+
+$script = <<END
+    sudo mount 192.168.56.1:/home/atlas/web/vagrant/wordpress/site /var/www/site;
+    sudo mount 192.168.56.1:/home/atlas/web/vagrant/wordpress/config /home/config;
+END
+
+  config.vm.provision "shell", run: "always", inline: $script
+
   config.vm.provision "start", type: "shell", path: "initWordpressBox/start.sh"
 
   # В этом провижине указана опция run: always, которая запускает его всегда при старте VAGRANT И ПОЛНОСТЬЮ ПЕРЕЗАПИСЫВАЕТ
