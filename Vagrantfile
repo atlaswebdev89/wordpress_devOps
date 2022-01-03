@@ -21,6 +21,10 @@ Vagrant.configure("2") do |config|
       vb.gui = false
       # Для отображения понятного имени в virtualbox
       vb.name = "WP-Instance"
+      # объем оперативной памяти
+      vb.memory = 1024
+      # количество ядер процессора
+      vb.cpus = 2
   end
   
   config.vm.provision "start", type: "shell", path: "initWordpressBox/start.sh"
