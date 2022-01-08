@@ -4,7 +4,7 @@
 apt-get -y update && apt-get -y upgrade
  
 # установка утилит
-apt-get -y install net-tools dnsutils iputils-ping apache2 curl php7.3 libapache2-mod-php7.3 php7.3-curl php7.3-gd php7.3-mbstring php7.3-zip
+apt-get -y install net-tools unzip dnsutils iputils-ping apache2 curl php7.3 libapache2-mod-php7.3 php7.3-curl php7.3-gd php7.3-mbstring php7.3-zip
 
 # Устанавливаем часовой пояс
 ln -snf /usr/share/zoneinfo/Europe/Minsk /etc/localtime && echo Europe/Minsk > /etc/timezone
