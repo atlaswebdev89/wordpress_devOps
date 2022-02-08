@@ -17,7 +17,7 @@ plugins=(
             "wpvivid-backuprestore"
             "classic-widgets" 
             "classic-editor"
-            "cyr-and-lat"
+            "cyr2lat"
             "duplicator"
             "error-log-monitor"
             "html-editor-syntax-highlighter"
@@ -60,16 +60,12 @@ wp core install --url=$url  --title="New Site Wordpress" --admin_user=$user --ad
 
         # Удаляем ненужные плагины
         wp plugin delete akismet
-        wp plugin delete hello-dolly
+        wp plugin delete hello
         
         # Обновляем плагины 
         wp plugin update --all
         
-        # Обновить переводы
-            wp language plugin --all update
-            wp language theme --all update 
-            wp language core update
-
+        
         # Устанавливаем и активируем дополнительные необходимые плагины
         if [[ $pluginsLen > 0 ]]
         then
@@ -93,13 +89,17 @@ then
             cd $site && wp plugin activate carbon-fields
             # Удаляем архив плагина
             cd ${HOME} && rm $namePl
-else 
+else
     echo "Success: Carbon Fields is installed"
     # Активируем плагин
     cd $site && wp plugin activate carbon-fields
     echo "Success: Carbon Fields is activated"
 fi
-        
-    
-    
-    
+
+# Обновить переводы
+            cd $site
+            wp language plugin --all update
+            wp language theme --all update 
+            wp language core update
+
+

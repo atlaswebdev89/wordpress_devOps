@@ -5,9 +5,6 @@
 	version="5.1.1"
 	config="config.inc.php"
 	apache_conf="pma.conf"
-# Обновим пакеты и установим недостающие 
-	apt-get -y update
-	apt-get -y install php-xml php-mbstring php-zip php-gd php-curl php-json php-gettext  php-phpseclib
 # Создадим директории для phpmyadmin 
 	
 	if  [[ -d $dir_1 ]] 

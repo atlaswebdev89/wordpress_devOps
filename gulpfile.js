@@ -22,11 +22,19 @@ var gutil = require('gulp-util'); // Дополнительные утилиты
 // copy при удалении файлов в исходной папке не удаляет в dest. 
 // Необходимо запускать gulp заного 
 
+
+
+//Название новой темы Wordpress
+var theme = "test";
+// Путь к файлам новой темы
+var path_theme = "site/wp-content/themes/"+theme;
+
+
 // Копируем основной файл для темы style.css
 gulp.task ("copy-style", function () {
    return gulp.src("app/theme/style/**/*.+(css)")
             .pipe(rename("style.css"))
-        .pipe (gulp.dest("site/wp-content/themes/belrock/"))
+        .pipe (gulp.dest(path_theme))
 });
 
 // Копируем изображение для темы название меняем а расширение оставляем таким же
@@ -35,19 +43,19 @@ gulp.task ("copy-screenshot", function () {
             .pipe(rename(function (path) {
                 path.basename = "screenshot";
             }))
-        .pipe (gulp.dest("site/wp-content/themes/belrock/"))
+        .pipe (gulp.dest(path_theme))
 });
 
 // Копируем файлы переводов
 gulp.task ("lang", function () {
    return gulp.src("app/theme/languages/**/*")
-        .pipe (gulp.dest("site/wp-content/themes/belrock/languages/"))
+        .pipe (gulp.dest(path_theme+"/languages/"))
 });
 
 // Копирование файлов php для темы
 gulp.task ("copy-files-theme", function () {
    return gulp.src("app/theme/php/**/*")
-           .pipe(gulp.dest("site/wp-content/themes/belrock/"))
+             .pipe(gulp.dest(path_theme))
 });
 
 // Копируем стили для страницы авторизации (wp-admin)
@@ -57,13 +65,13 @@ gulp.task('copy-style-login', function() {
         .pipe(autoprefixer())
         .pipe(cssnano())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest("site/wp-content/themes/belrock/assets/css")); 
+        .pipe(gulp.dest(path_theme+"/assets/css")); 
 });
 
 //Копируем шрифты
 gulp.task('fonts', function() {
   return gulp.src('app/assets/frontend/fonts/**/*')
-    .pipe(gulp.dest('site/wp-content/themes/belrock/assets/fonts'))
+    .pipe(gulp.dest(path_theme+"/assets/fonts"))
 });
 
 // *************** CSS ******************************************************* 
@@ -71,7 +79,7 @@ gulp.task('fonts', function() {
 gulp.task("copy-css-ext", function () {
     return gulp.src ("app/assets/frontend-extensions/**/*.+(css)")
             .pipe(rename({dirname: ""})) // убрать директории
-            .pipe (gulp.dest("site/wp-content/themes/belrock/assets/css"))
+            .pipe (gulp.dest(path_theme+"/assets/css"))
 });
 
 //Оптимизация css
@@ -81,7 +89,7 @@ gulp.task("css", function () {
         .pipe(autoprefixer())
         .pipe(cssnano())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest("site/wp-content/themes/belrock/assets/css")); 
+        .pipe(gulp.dest(path_theme+"/assets/css")); 
 });
 // *************** END CSS ****************************************************
 
@@ -90,7 +98,7 @@ gulp.task("css", function () {
 gulp.task("copy-js-ext", function () {
     return gulp.src ("app/assets/frontend-extensions/**/*.js")
             .pipe(rename({dirname: ""})) // убрать директории
-            .pipe (gulp.dest("site/wp-content/themes/belrock/assets/js"))
+             .pipe (gulp.dest(path_theme+"/assets/js"))
 });
 //Оптимизация js
 gulp.task("scripts", function() {
@@ -98,7 +106,7 @@ gulp.task("scripts", function() {
         .pipe(concat('main.js')) // объеденим все js-файлы в один 
         .pipe(uglify()) // вызов плагина uglify - сжатие кода
         .pipe(rename({ suffix: '.min' })) // вызов плагина rename - переименование файла с приставкой .min
-        .pipe(gulp.dest("site/wp-content/themes/belrock/assets/js")); // директория продакшена, т.е. куда сложить готовый файл
+        .pipe(gulp.dest(path_theme+"/assets/js")); // директория продакшена, т.е. куда сложить готовый файл
 });
 
 // *************** END JS ****************************************************
@@ -111,7 +119,7 @@ gulp.task("images", function() {
                 svgoPlugins: [{ removeViewBox: false }],
                 interlaced: true
             })))
-            .pipe(gulp.dest("site/wp-content/themes/belrock/assets/images"))
+            .pipe(gulp.dest(path_theme+"/assets/images"))
 });
 
 //Следить за изменениями в файлах
@@ -131,7 +139,7 @@ gulp.task ("watcher", function () {
 
 //Для удаления папки dist перед сборкой
 gulp.task("del", function () {
-   return del('site/wp-content/themes/belrock/'); // Удаляем папку belrock перед сборкой 
+   return del(path_theme); // Удаляем папку theme перед сборкой 
 });
 
 //Очистка кеша

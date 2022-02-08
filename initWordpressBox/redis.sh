@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt-get -y install redis php-redis
+apt-get -y install redis 
