@@ -14,3 +14,6 @@
     else 
 	echo "Not found xdebug";
     fi
+
+# Перезагрузка apache2
+systemctl restart apache2.service

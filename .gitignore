@@ -3,3 +3,4 @@
 /nbproject
 .vagrant/
 /config/*.sql
+/node_modules
