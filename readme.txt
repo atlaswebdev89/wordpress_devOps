@@ -50,6 +50,7 @@ xdebug (в IDE надо делать mapping каталогов)
 
 ЖЕЛАТЕЛЬНО ИЗМЕНИТЬ НАЗВАНИЕ НОВОГО САЙТА В файле config/virtualHost.conf
 
+СОЗДАТЬ ПАПКУ к корне site/
 3. Запустить установка vagrant 
         vagrant up
 
