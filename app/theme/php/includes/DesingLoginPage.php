@@ -13,7 +13,7 @@ function logo_link_url() {
 }
 
 #Изменение title ссылки
-add_filter( 'login_headertitle', 'logo_link_title' );
+add_filter( 'login_headertext', 'logo_link_title' );
 function logo_link_title() {
     return TitleDesc;
 }
