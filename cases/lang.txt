@@ -7,3 +7,7 @@ msgstr ""
 #. Description of the theme
 msgid "Theme for web landing buhgalter"
 msgstr ""
+
+
+!!!! Следить за проблемами в переводе БУДЕТ ВЫДАВАТЬ ОШИБКУ 
+		Page "crb_carbon_fields_container.php" already registered
