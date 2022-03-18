@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "public_network", bridge: "wlan0"
   # Для настройки nfs (двухсторонняя сихронизация) необходим витруальный адаптер host-only
   # Создается приватная сеть и назначается ip адресс (dhcp не работает !!! WARNING!!! BUG!! )	
-  config.vm.network "private_network", ip: "192.168.56.100"	 
+  config.vm.network "private_network", ip: "192.168.70.100"	 
   # Синхронизация каталогов
   config.vm.synced_folder "config/", "/home/config/", type: "nfs",linux__nfs_options: ['rw','no_subtree_check','all_squash','async']
   config.vm.synced_folder "site/", "/var/www/site", type: "nfs", linux__nfs_options: ['rw','no_subtree_check','all_squash','async']
@@ -30,8 +30,8 @@ Vagrant.configure("2") do |config|
   # Устранения бага при монтировании nfs
   config.vm.provision "nfs-not-bags", type: "shell", run: "always" do |s|
     vagrant_root = File.dirname(__FILE__);
-    s.inline = "sudo mount 192.168.56.1:$1/site /var/www/site;
-                sudo mount 192.168.56.1:$1/config /home/config;"
+    s.inline = "sudo mount 192.168.70.1:$1/site /var/www/site;
+                sudo mount 192.168.70.1:$1/config /home/config;"
     s.args   = [vagrant_root]
   end
 

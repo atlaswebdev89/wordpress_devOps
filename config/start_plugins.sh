@@ -4,7 +4,7 @@
 site=/var/www/site
 user="atlas"
 pass="coredallas89"
-url="dev-site.atl"
+url="dev-site2.atl"
 
 # Переходим в каталог с wp сайтом
 cd $site
@@ -41,6 +41,8 @@ plugins=(
             "user-login-history"
             "wp-htaccess-editor"
             "limit-login-attempts-reloaded"
+            "simple-css"
+            "contact-form-7"
 )
 
 # Длина массива
