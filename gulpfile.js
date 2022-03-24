@@ -22,18 +22,19 @@ var gutil = require('gulp-util'); // Дополнительные утилиты
 // copy при удалении файлов в исходной папке не удаляет в dest. 
 // Необходимо запускать gulp заного 
 
-
-
 //Название новой темы Wordpress
 var theme = "test";
 
 //Доступ к ftp
-var ftp_server="panel.by";
-var ftp_user="lofts.by";
-var ftp_password ="coredallas89";
+var ftp_server="test";
+var ftp_user="test";
+var ftp_password ="test";
 
 // Путь к файлам новой темы
 var path_theme = "site/wp-content/themes/"+theme;
+
+// Путь к папке плагинов
+var path_plugins = "site/wp-content/plugins/";
 
 //Деплой на предпродакшен  сервер по ftp 
 gulp.task('deploy-ftp', function() {
@@ -48,6 +49,12 @@ gulp.task('deploy-ftp', function() {
             
             return gulp.src(path_theme+"/**/*", { dot: true, buffer: false })
                     .pipe(conn.dest('/wp-content/themes/'+theme));
+});
+
+// Копируем плагины в wordpress каталог
+gulp.task ("copy-plugins", function () {
+   return gulp.src("app/plugins/**/*")
+        .pipe (gulp.dest(path_plugins))
 });
 
 // Копируем основной файл для темы style.css
@@ -155,6 +162,7 @@ gulp.task ("watcher", function () {
     gulp.watch("app/assets/frontend/js/**/*.js", gulp.parallel("scripts"));
     gulp.watch("app/assets/frontend-extensions/**/*.+(css)", gulp.parallel("copy-css-ext"));
     gulp.watch("app/assets/frontend-extensions/**/*.js", gulp.parallel("copy-js-ext"));
+    gulp.watch("app/plugins/**/*", gulp.parallel("copy-plugins"));
 });
 
 //Для удаления папки dist перед сборкой
@@ -164,7 +172,7 @@ gulp.task("del", function () {
 
 //Очистка кеша
 gulp.task('clear', function (callback) {
-	return cache.clearAll();
+    return cache.clearAll();
 });
 
 gulp.task("default", gulp.parallel(
@@ -179,6 +187,7 @@ gulp.task("default", gulp.parallel(
                                     "copy-files-theme",
                                     "css",
                                     "scripts", 
+                                    "copy-plugins",
                                     "watcher"
                                               ));
 gulp.task("build", gulp.series(
@@ -191,6 +200,7 @@ gulp.task("build", gulp.series(
                                     "copy-screenshot",
                                     "copy-css-ext", 
                                     "copy-js-ext",
+                                    "copy-plugins",
                                     "images",  
                                     "fonts",
                                     "css",
