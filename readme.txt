@@ -35,8 +35,8 @@ xdebug (в IDE надо делать mapping каталогов)
 
 ***************************************** УСТАНОВКА *******************************************
 
-1. Установить Wordpress в локальную папке. Запустить в консоле команду
-    ./getWordpress.sh
+1. Установить Wordpress и иницилизтровать git в локальную папке. Запустить в консоле команду
+    ./start.sh
 
 В папке site появятся файлы последней версии wordpress
 
@@ -50,20 +50,19 @@ xdebug (в IDE надо делать mapping каталогов)
 
 ЖЕЛАТЕЛЬНО ИЗМЕНИТЬ НАЗВАНИЕ НОВОГО САЙТА В файле config/virtualHost.conf
 
-3. Запустить установка vagrant 
+3. Заменить в файле start_plugins.sh название сайта
+
+4. Запустить установка vagrant 
         vagrant up
 
-4. Подключиться к созданной виртуальной машине
-        vagrant ssh
-5. Выполнить команду первоначальной настройки wp сайта
-	Заменить в файле start_plugins.sh название сайта и запустить команду 
-        /home/config/start_plugins.sh
+5  Запустить npm install (установка всех зависимостей из package.json)
+6  Запустить npm update 
 
-6. В файле gulpfile.js изменить название темы на свое 
+7. В файле gulpfile.js изменить название темы на свое 
     //Название новой темы Wordpress
     var theme = "test";
 
-7. Для устранения ошибки петлевого запроса прописать в /etc/hosts
+8. Для устранения ошибки петлевого запроса прописать в /etc/hosts
 
     127.0.0.1 {название сайта}
 
@@ -75,6 +74,9 @@ vagrant provision
 # или
 vagrant reload --provision
 
+# Создать dump базы данных
+vagrant provision --provision-with dump-db
+
 # Обновить настройки site (настройки virtualhost)
 vagrant provision --provision-with siteEnable
 
@@ -82,13 +84,11 @@ vagrant provision --provision-with siteEnable
 vagrant provision --provision-with phpmyadmin
 
 
+# Обновить установленные плагины
+vagrant provision --provision-with initPlugins
+
 # Создание дамп BD файл createDumpDB.sh
 # Запустить в vagrant createDumpDB.sh и создаться файл data-dump.sql
 
 # Обновить настройки xdebug
 vagrant provision --provision-with xdebug
-
-
-# При копирование окружения с github надо удалить
-    - config/data-dump.sql
-    - в site/wp-config.php указать параметры для подключения к базе данных (wodpress, wordpress, wordpress)

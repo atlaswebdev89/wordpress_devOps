@@ -1,7 +1,8 @@
 /nbproject/private/
 /nbproject
 .vagrant/
-/config/*.sql
 /node_modules
 /site/wp-content/wpvividbackups/*
 /site/wp-content/backups-dup-lite/*
+/site/wp-content/debug.log
+/site/wp-content/cache/supercache/

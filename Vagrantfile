@@ -34,17 +34,23 @@ Vagrant.configure("2") do |config|
                 sudo mount 192.168.57.1:$1/config /home/config;"
     s.args   = [vagrant_root]
   end
-
-  config.vm.provision "start", type: "shell", path: "initWordpressBox/start.sh"
+  
+  init_dir = "initBox";
+  config.vm.provision "start", type: "shell", path: init_dir+"/start.sh"
 
   # В этом провижине указана опция run: always, которая запускает его всегда при старте VAGRANT И ПОЛНОСТЬЮ ПЕРЕЗАПИСЫВАЕТ
   # БАЗУ ДАННЫХ Это не всегда нужно
   #config.vm.provision "siteEnable", type: "shell", run: "always", path: "initWordpressBox/config-site.sh"
   
-  config.vm.provision "siteEnable", type: "shell",  path: "initWordpressBox/config-site.sh"
-  config.vm.provision "wp-cli", type: "shell", path: "initWordpressBox/wp-cli.sh"
-  config.vm.provision "phpmyadmin", type: "shell", path: "initWordpressBox/phpmyadmin.sh"
-  config.vm.provision "redis", type: "shell", path: "initWordpressBox/redis.sh"
-  config.vm.provision "memchached", type: "shell", path: "initWordpressBox/memcached.sh"
-  config.vm.provision "xdebug", type: "shell", path: "initWordpressBox/xdebug.sh"
+  config.vm.provision "siteEnable", type: "shell",  path: init_dir+"/config-site.sh"
+  config.vm.provision "wp-cli", type: "shell", path: init_dir+"/wp-cli.sh"
+  config.vm.provision "phpmyadmin", type: "shell", path: init_dir+"/phpmyadmin.sh"
+  config.vm.provision "redis", type: "shell", path: init_dir+"/redis.sh"
+  config.vm.provision "memchached", type: "shell", path: init_dir+"/memcached.sh"
+  config.vm.provision "xdebug", type: "shell", path: init_dir+"/xdebug.sh"
+  # Установка необходимых поагинов privileged: false - выполнить скрипт не из под root
+  config.vm.provision "initPlugins", type: "shell", privileged: false, path: init_dir+"/start_plugins.sh"
+  
+  #  Создание дампа базы данных Всегда при старте Vagrant 
+  config.vm.provision "dump-db", type: "shell", run: "always", path: init_dir+"/createDumpDB.sh"
 end
