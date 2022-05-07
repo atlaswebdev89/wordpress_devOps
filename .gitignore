@@ -1,7 +1,6 @@
 /nbproject/private/
 /nbproject
 .vagrant/
-/cases
 /node_modules
 /site/wp-content/wpvividbackups/*
 /site/wp-content/backups-dup-lite/*
