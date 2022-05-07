@@ -6,6 +6,15 @@ require_once get_template_directory() . '/defines/' . $fileDefine;
 
 //Подключение отдельных файлов для настройки темы
 $svkupe_includes = array(
+
+    // =============================================================================    
+    //'Styles',            // Подключение стилей для сайта
+    //'Javascripts',       // Подключение js файлов для сайта
+     'CustomFunctions',   // Дополнительные функции
+     'KeywordsCarbon',    // Ключевые слова для страницы
+     'PriceCarbon',         // Услуги и цены
+    // =============================================================================  
+
     'HeadModify',       // Файл для очистки раздела head от всего лишнего
     'AdminBarModify',   // Файл для удаление ненужных ссылок в админ баре (полоска сверху в админке)
     'DisableXmlRpc',    // Отключение xmlrps.php (а также блокировка в htaccess ) Или плагин  Disable XML-RPC - делает тоже самое
@@ -32,7 +41,8 @@ function themes_setup() {
         register_nav_menus(array( // Регистрируем 3 меню
             'main' =>__('Main Menu', DOMAIN_TEXT), // Верхнее
             'footer' =>__('Footer Menu',DOMAIN_TEXT), // Внизу
-            'sidebar_menu' =>__('Sidebar Menu', DOMAIN_TEXT) // Меню Сайдбар
+            'sidebar_menu' =>__('Sidebar Menu', DOMAIN_TEXT), // Меню Сайдбар
+            'not_found' =>__('404 Menu',DOMAIN_TEXT) // Внизу
         ));
         //Поддержка кастомного логотипа
         add_theme_support('custom-logo');

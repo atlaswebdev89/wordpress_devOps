@@ -1,8 +1,8 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/buster64"  
-  config.vm.hostname = "wordpress2"  
+  config.vm.hostname = "wordpress20"  
   #Имя в Vagrant Status 
-  config.vm.define "WordpressDevTools2"
+  config.vm.define "WordpressDevTools20"
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
       # Без графического интерфейса
       vb.gui = false
       # Для отображения понятного имени в virtualbox
-      vb.name = "WP-Instance2"
+      vb.name = "WP-Instance20"
       # объем оперативной памяти
       vb.memory = 2048
       # количество ядер процессора

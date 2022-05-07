@@ -36,6 +36,13 @@ function create_page_contacts() {
                                     ->set_width(50),
                     )
                 )
+        ->add_tab( __( 'Map', DOMAIN_TEXT ), array(
+                                Field::make("checkbox", "crb_show_map", __("Show section map", DOMAIN_TEXT))
+                                    ->set_option_value('on'), // Не обязательно. По умолчанию ``yes``
+                                Field::make( 'textarea', 'crb_map_comp', __( 'Map', DOMAIN_TEXT ) )
+                                    ->set_rows(6)->help_text('<p>'. __( 'Set Map Company', DOMAIN_TEXT ).'</p>'),
+                    )
+                )    
         ->add_tab( __( 'Address', DOMAIN_TEXT ), array(
                                 Field::make( 'textarea', 'crb_address_comp', __( 'Address', DOMAIN_TEXT ) )
                                     ->set_rows(2)->help_text('<p>'. __( 'Set Address Company', DOMAIN_TEXT ).'</p>'),
@@ -84,6 +91,9 @@ function create_page_contacts() {
                                 Field::make( 'text', 'crb_vk_link', __( 'VK', DOMAIN_TEXT) )
                                    ->help_text('<p>'. __( 'link in profile VK', DOMAIN_TEXT ).'</p>')
                                      ->set_attribute( 'placeholder', 'Vk' ),
+                                Field::make( 'text', 'crb_vk_whatsapp', __( 'Whatsapp', DOMAIN_TEXT) )
+                                   ->help_text('<p>'. __( 'link in profile Whatsapp', DOMAIN_TEXT ).'</p>')
+                                     ->set_attribute( 'placeholder', 'Whatsapp' ),
                     )
                 )
             ->add_tab( __( 'Info', 'atlas-domain' ), array(
