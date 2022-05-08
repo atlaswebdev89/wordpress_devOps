@@ -26,8 +26,7 @@ Vagrant.configure("2") do |config|
       # количество ядер процессора
       vb.cpus = 2
   end
-  # 
-  config.ssh.username = "vagrant"
+  
   # Устранения бага при монтировании nfs
   config.vm.provision "nfs-not-bags", type: "shell", run: "always" do |s|
     vagrant_root = File.dirname(__FILE__);
